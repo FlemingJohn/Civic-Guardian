@@ -9,10 +9,10 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center text-center space-y-12">
       <div className="space-y-4">
         <h1 className="text-6xl font-headline text-accent animate-pulse">
-          Pixel Pushers
+          Civic Guardians
         </h1>
         <p className="text-2xl font-body max-w-2xl mx-auto">
-          Your retro-themed hub for reporting and tracking community issues. Join the game, push for change!
+          Your shield for community action and issue tracking. Report problems and help us protect our community.
         </p>
       </div>
 

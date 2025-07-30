@@ -4,8 +4,8 @@ import { AppHeader } from '@/components/app-header';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Pixel Pushers',
-  description: 'Report and track community issues, the retro way.',
+  title: 'Civic Guardians',
+  description: 'Your shield for community action and issue tracking.',
 };
 
 export default function RootLayout({
