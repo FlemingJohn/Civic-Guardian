@@ -31,6 +31,7 @@ export default function AdminPage() {
       });
       setAiActions(prev => ({ ...prev, [complaint.id]: result }));
     } catch (error) {
+      console.error(error);
       toast({ title: 'AI Suggestion Failed', description: 'Could not generate admin actions.', variant: 'destructive' });
     } finally {
       setIsLoadingAi(null);
@@ -76,9 +77,13 @@ export default function AdminPage() {
           </Table>
         </CardContent>
       </Card>
-      {Object.entries(aiActions).map(([id, actions]) => (
-          <Card key={id} className="mt-4 border-2 border-primary bg-black p-4">
-              <CardTitle className="font-body text-lg text-primary">AI Suggested Actions for Issue #{id}</CardTitle>
+      {Object.entries(aiActions).map(([id, actions]) => {
+          const complaint = mockComplaints.find(c => c.id === id);
+          if (!complaint) return null;
+          
+          return (
+            <Card key={id} className="mt-4 border-2 border-primary bg-black p-4">
+              <CardTitle className="font-body text-lg text-primary">AI Suggested Actions for "{complaint.title}"</CardTitle>
               <CardContent className="pt-4 text-sm">
                   <p className="text-muted-foreground font-bold">Reasoning: <span className="font-normal">{actions.reasoning}</span></p>
                   <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -86,7 +91,8 @@ export default function AdminPage() {
                   </ul>
               </CardContent>
           </Card>
-      ))}
+          )
+      })}
     </div>
   );
 }

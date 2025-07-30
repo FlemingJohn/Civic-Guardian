@@ -38,23 +38,16 @@ const actionSuggestionPrompt = ai.definePrompt({
   name: 'actionSuggestionPrompt',
   input: {schema: SuggestAdminActionsInputSchema},
   output: {schema: SuggestAdminActionsOutputSchema},
-  prompt: `You are an AI assistant helping a government admin address reported issues.
+  prompt: `You are an AI assistant for a government admin. Based on the issue details below, suggest actions to resolve it and provide reasoning.
 
-  Based on the issue description, responsible department, location, and any attached file, suggest a list of actions the admin can take to resolve the issue.
-  Also provide a reasoning for each suggested action.
+Issue Description: {{{issueDescription}}}
+Responsible Department: {{{department}}}
+Location: {{{location}}}
+{{~#if fileDataUri}}
+File: {{media url=fileDataUri}}
+{{~/if}}
 
-  Issue Description: {{{issueDescription}}}
-  Responsible Department: {{{department}}}
-  Location: {{{location}}}
-  {{~#if fileDataUri}}File: {{media url=fileDataUri}}{{/if}}
-
-  Format your response as follows:
-  Reasoning: <reasoning>
-  Suggested Actions:
-  - <action 1>
-  - <action 2>
-  ...
-  `,
+Provide your response in JSON format.`,
 });
 
 const suggestAdminActionsFlow = ai.defineFlow(
