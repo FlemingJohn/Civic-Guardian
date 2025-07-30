@@ -13,16 +13,16 @@ export function AppHeader() {
           </h1>
         </Link>
         <nav className="hidden md:flex items-center gap-2">
-          <Link href="/report-issue" legacyBehavior passHref>
+          <Link href="/report-issue">
             <Button variant="ghost" className="font-body text-lg hover:bg-transparent hover:text-accent">Report Issue</Button>
           </Link>
-          <Link href="/stats" legacyBehavior passHref>
+          <Link href="/stats">
             <Button variant="ghost" className="font-body text-lg hover:bg-transparent hover:text-accent">Public Stats</Button>
           </Link>
-          <Link href="/dashboard" legacyBehavior passHref>
+          <Link href="/dashboard">
             <Button variant="ghost" className="font-body text-lg hover:bg-transparent hover:text-accent">Dashboard</Button>
           </Link>
-          <Link href="/admin" legacyBehavior passHref>
+          <Link href="/admin">
             <Button variant="ghost" className="font-body text-lg hover:bg-transparent hover:text-accent">Admin</Button>
           </Link>
         </nav>
