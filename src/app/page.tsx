@@ -23,11 +23,11 @@ export default function Home() {
           </CardHeader>
           <CardContent className="flex flex-col items-center space-y-4">
             <p className="font-body text-lg">Found a pothole? A broken streetlight? Report it here and get it on the map.</p>
-            <Link href="/report-issue" passHref>
-              <Button className={pixelButtonClasses}>
+            <Button asChild className={pixelButtonClasses}>
+              <Link href="/report-issue">
                 Start Mission
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </CardContent>
         </Card>
         
@@ -37,11 +37,11 @@ export default function Home() {
           </CardHeader>
           <CardContent className="flex flex-col items-center space-y-4">
             <p className="font-body text-lg">See the high scores! Check out community-wide stats on reported issues.</p>
-            <Link href="/stats" passHref>
-              <Button className={pixelButtonClasses}>
+            <Button asChild className={pixelButtonClasses}>
+              <Link href="/stats">
                 Leaderboard
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -49,13 +49,13 @@ export default function Home() {
        <div className="pt-8">
          <p className="font-body text-lg">Already on a mission?</p>
          <div className="flex gap-4 mt-2">
-           <Link href="/dashboard" passHref>
-             <Button variant="link" className="font-body text-accent text-xl hover:underline">View My Dashboard</Button>
-           </Link>
+           <Button asChild variant="link" className="font-body text-accent text-xl hover:underline">
+             <Link href="/dashboard">View My Dashboard</Link>
+           </Button>
            <span className="font-body text-accent text-xl">|</span>
-           <Link href="/admin" passHref>
-            <Button variant="link" className="font-body text-accent text-xl hover:underline">Admin Panel</Button>
-           </Link>
+           <Button asChild variant="link" className="font-body text-accent text-xl hover:underline">
+            <Link href="/admin">Admin Panel</Link>
+           </Button>
          </div>
        </div>
     </div>
