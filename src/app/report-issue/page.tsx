@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -12,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, FileUp } from 'lucide-react';
 
 const formSchema = z.object({
   description: z.string().min(20, { message: 'Please provide a more detailed description (min 20 chars).' }),
@@ -27,6 +28,8 @@ export default function ReportIssuePage() {
   const [isSuggesting, setIsSuggesting] = useState(false);
   const [suggestion, setSuggestion] = useState<{ departmentName: string; justification: string } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -76,6 +79,18 @@ export default function ReportIssuePage() {
     });
     form.reset();
     setSuggestion(null);
+    setFileName(null);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+      form.setValue('file', file);
+    } else {
+      setFileName(null);
+      form.setValue('file', null);
+    }
   };
 
   return (
@@ -117,7 +132,25 @@ export default function ReportIssuePage() {
 
             <div className="space-y-2">
               <Label htmlFor="file">Attach File (Optional)</Label>
-              <Input id="file" type="file" {...form.register('file')} className="bg-black text-white file:text-primary file:font-body" />
+              <Input
+                id="file"
+                type="file"
+                className="hidden"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+              />
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full text-accent-foreground"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <FileUp className="mr-2 h-4 w-4" />
+                Upload File
+              </Button>
+              {fileName && (
+                <p className="text-sm text-muted-foreground pt-2">Selected file: {fileName}</p>
+              )}
             </div>
 
             <Button type="submit" disabled={isSubmitting} className="w-full font-body text-xl border-2 border-foreground shadow-[4px_4px_0px_hsl(var(--foreground))] hover:shadow-none active:shadow-none active:translate-x-1 active:translate-y-1 transition-all">
@@ -130,3 +163,4 @@ export default function ReportIssuePage() {
     </div>
   );
 }
+
