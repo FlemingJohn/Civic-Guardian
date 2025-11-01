@@ -46,6 +46,32 @@ export default function Home() {
         </Card>
       </div>
 
+      <div className="w-full max-w-4xl pt-12">
+        <h2 className="text-4xl font-headline text-accent mb-8">How It Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent text-primary-foreground font-bold text-2xl">1</div>
+            <h3 className="text-xl font-headline">Report an Issue</h3>
+            <p className="font-body text-center">Use our simple form to describe the problem and upload a photo.</p>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent text-primary-foreground font-bold text-2xl">2</div>
+            <h3 className="text-xl font-headline">Mission Accepted</h3>
+            <p className="font-body text-center">Our team will review your report and assign it to the relevant department.</p>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent text-primary-foreground font-bold text-2xl">3</div>
+            <h3 className="text-xl font-headline">Track Progress</h3>
+            <p className="font-body text-center">Follow your mission's journey from start to finish with our real-time timeline.</p>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent text-primary-foreground font-bold text-2xl">4</div>
+            <h3 className="text-xl font-headline">Mission Complete</h3>
+            <p className="font-body text-center">Get notified when the issue is resolved and see the positive impact on your community.</p>
+          </div>
+        </div>
+      </div>
+
        <div className="pt-8">
          <p className="font-body text-lg">Already on a mission?</p>
          <div className="flex gap-4 mt-2">
